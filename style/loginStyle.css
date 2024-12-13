@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Orbitron&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 500px;
+    width: 500px;
+}
