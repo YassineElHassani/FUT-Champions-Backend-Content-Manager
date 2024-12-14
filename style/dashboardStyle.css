@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Orbitron&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Didact Gothic', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(195deg, rgb(11, 7, 85) 0%, rgba(9,9,121,1) 35%, rgb(0, 89, 255) 100%);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: rgb(102, 121, 228);
+  border-right: 1px solid rgb(41, 25, 185);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebarLogo {
+  display: flex;
+  align-items: center;
+  padding: 0 20px 30px;
+  border-bottom: 1px solid rgb(41, 25, 185);
+}
+
+.sidebarLogo img {
+  width: 40px;
+  margin-right: 15px;
+}
+
+.sidebarLogo h2 {
+  color: rgb(202, 202, 202);
+  font-size: 20px;
+}
+
+.sidebarMenu {
+  margin-top: 30px;
+}
+
+.sidebarMenu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sidebarMenu a:hover,
+.sidebarMenu a.active {
+  background-color: rgb(41, 25, 185);
+  color: white;
+  border-radius: 10px;
+  margin: 8px;
+}
+
+.sidebarMenu a i {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+/* Main Content */
+.mainContent {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboardHeader h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.userProfile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dashboardCard {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px white;
+  transition: transform 0.3s ease;
+}
+
+.dashboardCard:hover {
+  transform: translateY(-5px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cardValue {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(41, 25, 185);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  body {
+      flex-direction: column;
+  }
+
+  .sidebar {
+      width: 100%;
+      flex-direction: row;
+      height: auto;
+  }
+
+  .sidebarLogo {
+      border-bottom: none;
+      border-right: 1px solid #e0e4e8;
+  }
+
+  .sidebarMenu {
+      display: flex;
+      margin-top: 0;
+      flex-grow: 1;
+  }
+
+  .mainContent {
+      padding: 20px;
+  }
+
+  .dashboardGrid {
+      grid-template-columns: 1fr;
+  }
+}
