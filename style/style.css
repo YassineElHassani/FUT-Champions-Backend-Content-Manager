@@ -7,10 +7,6 @@
     font-family: 'Didact Gothic', sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background: rgb(2,0,36);
     background: linear-gradient(195deg, rgb(11, 7, 85) 0%, rgba(9,9,121,1) 35%, rgb(0, 89, 255) 100%);
@@ -30,24 +26,29 @@ body {
     width: 100px;
 }
 
+.nav a h2 {
+    color: rgb(202, 202, 202);
+    font-size: 20px;
+}
+
 .nav button {
     margin-right: 20px;
     padding-inline: auto;
     height: 50px;
-    width: 150px;
-    font-size: 25px;
-    border-radius: 10px;
-    background-color: black;
+    width: 110px;
+    font-size: 15px;
+    border-radius: 20px;
+    background-color: rgb(41, 25, 185);
     color: white;
-    font-weight: bold;
     border: none;
     cursor: pointer;
     text-decoration: none;
 }
 
 .nav button:hover {
-    background-color: white;
-    color: black;
+    background-color: rgb(25, 0, 255);
+    color: white;
+    cursor: pointer;
 }
 
 .nav a {
