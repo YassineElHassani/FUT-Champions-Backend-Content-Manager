@@ -13,7 +13,7 @@
             <img src="./src/img/logo.png" alt="Dashboard Logo">
             <h2>FUT Team Builder</h2>
         </div>
-        <nav class="sidebar-menu">
+        <nav class="sidebarMenu">
             <a href="#" onclick="showSection('home')" class="active"><i>📊</i> Dashboard</a>
             <a href="#" onclick="showSection('addPlayer')"><i>👥</i> Add Players</a>
             <!-- <a href="#" onclick="showSection('home')"><i>🏆</i> Teams</a>
@@ -22,10 +22,10 @@
         </nav>
     </aside>
 
-    <main class="main-content">
-        <header class="dashboard-header">
+    <main class="mainContent">
+        <header class="dashboardHeader">
             <h1>FUT Management Dashboard</h1>
-            <div class="user-profile">
+            <div class="userProfile">
                 <img src="./src/img/admin.jpg" alt="User Avatar">
                 <div>
                     <strong>Full Name</strong>
@@ -34,37 +34,37 @@
             </div>
         </header>
 
-        <section class="dashboard-grid" id="home">
-            <div class="dashboard-card">
-                <div class="card-header">
+        <section class="dashboardGrid" id="home">
+            <div class="dashboardCard">
+                <div class="cardHeader">
                     <h3>Total Players</h3>
                     <p>👥</p>
                 </div>
-                <div class="card-value">254</div>
+                <div class="cardValue">254</div>
             </div>
 
-            <div class="dashboard-card">
-                <div class="card-header">
+            <div class="dashboardCard">
+                <div class="cardHeader">
                     <h3>Active Clubs</h3>
                     <p>🏆</p>
                 </div>
-                <div class="card-value">42</div>
+                <div class="cardValue">42</div>
             </div>
 
-            <div class="dashboard-card">
-                <div class="card-header">
+            <div class="dashboardCard">
+                <div class="cardHeader">
                     <h3>All Potions</h3>
                     <p>📋</p>
                 </div>
-                <div class="card-value">8</div>
+                <div class="cardValue">8</div>
             </div>
 
-            <div class="dashboard-card">
-                <div class="card-header">
+            <div class="dashboardCard">
+                <div class="cardHeader">
                     <h3>Recent Transfers</h3>
                     <p>🔄</p>
                 </div>
-                <div class="card-value">12</div>
+                <div class="cardValue">12</div>
             </div>
         </section>
 
