@@ -6,19 +6,19 @@
     <link rel="icon" href="./src/img/logo.png" type="image/x-icon"/>
     <title>Dashboard</title>
     <link rel="stylesheet" href="./style/dashboardStyle.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <aside class="sidebar">
-        <div class="sidebar-logo">
+        <div class="sidebarLogo">
             <img src="./src/img/logo.png" alt="Dashboard Logo">
             <h2>FUT Team Builder</h2>
         </div>
         <nav class="sidebarMenu">
-            <a href="#" onclick="showSection('home')" class="active"><i>📊</i> Dashboard</a>
-            <a href="#" onclick="showSection('addPlayer')"><i>👥</i> Add Players</a>
-            <!-- <a href="#" onclick="showSection('home')"><i>🏆</i> Teams</a>
-            <a href="#" onclick="showSection('home')"><i>📋</i> Leagues</a> -->
-            <a href="#" onclick="showSection('logout')"><i>↩️</i> Logout</a>
+            <a href="dashboard.php" class="active"><i>📊</i> Dashboard</a>
+            <a href="addPlayers.php"><i>👥</i> Add Players</a>
+            <a href="editPlayers.php"><i>📋</i> Edit Players</a>
+            <a href="logout.php"><i>↩️</i> Logout</a>
         </nav>
     </aside>
 
@@ -34,55 +34,105 @@
             </div>
         </header>
 
-        <section class="dashboardGrid" id="home">
-            <div class="dashboardCard">
-                <div class="cardHeader">
-                    <h3>Total Players</h3>
-                    <p>👥</p>
+        <section id="home">
+            <div class="dashboardGrid">
+                <div class="dashboardCard">
+                    <div class="cardHeader">
+                        <h3>Total Players</h3>
+                        <i>👥</i>
+                    </div>
+                    <div class="cardValue">254</div>
                 </div>
-                <div class="cardValue">254</div>
+
+                <div class="dashboardCard">
+                    <div class="cardHeader">
+                        <h3>Active Clubs</h3>
+                        <i>🏆</i>
+                    </div>
+                    <div class="cardValue">42</div>
+                </div>
+
+                <div class="dashboardCard">
+                    <div class="cardHeader">
+                        <h3>All Potions</h3>
+                        <i>📋</i>
+                    </div>
+                    <div class="cardValue">8</div>
+                </div>
+
+                <div class="dashboardCard">
+                    <div class="cardHeader">
+                        <h3>Recent Transfers</h3>
+                        <i>🔄</i>
+                    </div>
+                    <div class="cardValue">12</div>
+                </div>
             </div>
 
-            <div class="dashboardCard">
-                <div class="cardHeader">
-                    <h3>Active Clubs</h3>
-                    <p>🏆</p>
-                </div>
-                <div class="cardValue">42</div>
-            </div>
+            <table class="tableContainer">
+                <thead class="tableHeader">
+                    <tr>
+                        <th>Position</th>
+                        <th>Player Name</th>
+                        <th>Nationality</th>
+                        <th>Club</th>
+                        <th>Player Pace</th>
+                        <th>Player Shooting</th>
+                        <th>Player Passing</th>
+                        <th>Player Dribbling</th>
+                        <th>Player Defending</th>
+                        <th>Player Physical</th>
+                        <th>Player Rating</th>
+                        <th>Player Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $database = "futdb";
 
-            <div class="dashboardCard">
-                <div class="cardHeader">
-                    <h3>All Potions</h3>
-                    <p>📋</p>
-                </div>
-                <div class="cardValue">8</div>
-            </div>
+                        $connection = new mysqli($servername, $username, $password, $database);
+                        
+                        if ($connection->connect_error) {
+                            die("Connection failed: " . $connection->connect_error);
+                        }
 
-            <div class="dashboardCard">
-                <div class="cardHeader">
-                    <h3>Recent Transfers</h3>
-                    <p>🔄</p>
-                </div>
-                <div class="cardValue">12</div>
-            </div>
-        </section>
+                        $sql = "SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo, positionName
+                                FROM player 
+                                JOIN club ON player.clubID = club.clubID
+                                JOIN nationality ON player.nationalityID = nationality.nationalityID
+                                JOIN position ON player.playerID = position.positionID;";
+                        $result = $connection->query($sql);
 
-        <section id="addPlayer">
+                        if(!$result) {
+                            die("Invalid query: " . $connection->error);
+                        }
 
-        </section>
-
-        <section class="" id="logout">
-
+                        while ($row = $result->fetch_assoc()) {
+                            echo "
+                            <tr>
+                                <td>$row[positionName]</td>
+                                <td>$row[playerName]</td>
+                                <td><img src="."$row[nationalityLogo]"." height="."30px"." width="."50px"."></td>
+                                <td><img src="."$row[clubLogo]"." height="."30px"." width="."50px"."></td>
+                                <td>$row[playerPace]</td>
+                                <td>$row[playerShooting]</td>
+                                <td>$row[playerPassing]</td>
+                                <td>$row[playerDribbling]</td>
+                                <td>$row[playerDefending]</td>
+                                <td>$row[playerPhysical]</td>
+                                <td>$row[playerRating]</td>
+                                <td><img src="."$row[playerImage]"." height="."30px"." width="."50px"."></td>
+                            </tr>
+                            ";
+                        }
+                    ?>
+                    
+                </tbody>
+            </table>
         </section>
     </main>
-    <script>
-        function showSection(sectionId) {
-          document.querySelectorAll('.section').forEach(section => {
-            section.classList.add('hidden');
-          });
-          document.getElementById(sectionId).classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
