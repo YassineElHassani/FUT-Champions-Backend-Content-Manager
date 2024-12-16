@@ -48,14 +48,14 @@
                 <p>
                     <label for="username">Username:</label><br>
                     <input id="username" type="text" name="username" placeholder="Enter your username"/>
-                    <p style="color: red;"><?php echo $usernameError; ?></p>
+                    <p style="color: red; font-weight: bold;"><?php echo $usernameError; ?></p>
                 </p><br>
                 <p>
                     <label for="password">Password:</label><br>
                     <input id="password" type="password" name="password" placeholder="Enter your password"/>
-                    <p style="color: red;"><?php echo $passwordError; ?></p>
+                    <p style="color: red; font-weight: bold;"><?php echo $passwordError; ?></p>
                 </p><br>
-                <p style="color: red;"><?php echo $loginError; ?></p>
+                <p style="color: red; font-weight: bold;"><?php echo $loginError; ?></p>
                 <button name="submit" type="submit">Login</button>
             </form>
         </div>
