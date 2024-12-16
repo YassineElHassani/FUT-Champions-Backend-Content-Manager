@@ -70,6 +70,10 @@ body {
 }
 
 /* Main Content */
+.hidden {
+  display: none;
+}
+
 .mainContent {
   flex-grow: 1;
   padding: 30px;
@@ -108,10 +112,10 @@ body {
 }
 
 .dashboardCard {
-  background-color: white;
+  background-color: rgb(102, 121, 228);
+  box-shadow: 0 4px 6px rgb(75, 121, 247);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px white;
   transition: transform 0.3s ease;
 }
 
@@ -132,6 +136,102 @@ body {
   color: rgb(41, 25, 185);
 }
 
+.tableContainer {
+  margin-top: 50px;
+  background-color: rgb(102, 121, 228);
+  box-shadow: 0 4px 6px rgb(75, 121, 247);
+  width: 100%;
+  border-radius: 30px;
+  padding: 50px;
+}
+
+
+.tableHeader {
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.addPlayer {
+  margin-inline: auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: rgb(102, 121, 228);
+  box-shadow: 0 4px 6px rgb(75, 121, 247);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.addPlayer #submitBtn {
+  height: 50px;
+  width: 150px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(41, 25, 185);
+  color: white;
+  cursor: pointer;
+}
+
+.addPlayer #submitBtn:hover {
+  background-color: rgb(25, 0, 255);
+}
+
+.logout {
+  margin-inline: auto;
+  background-color: rgb(102, 121, 228);
+  box-shadow: 0 4px 6px rgb(75, 121, 247);
+  margin-top: 200px;
+  height: 400px;
+  width: 400px;
+  border-radius: 30px;
+  border: solid 1px transparent;
+}
+
+.logout .logoutContainer {
+  margin-top: 120px;
+}
+
+.logout .logoutContainer h1 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.logout .logoutContainer .logoutBtns {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.logout .Y {
+  height: 50px;
+  width: 150px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(41, 25, 185);
+  color: white;
+  cursor: pointer;
+}
+
+.logout .Y:hover {
+  background-color: rgb(25, 0, 255);
+}
+
+.logout .N {
+  height: 50px;
+  width: 150px;
+  border-radius: 30px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.logout .N:hover {
+  background-color: #fd0000;
+  color: white;
+}
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   body {
@@ -161,5 +261,8 @@ body {
 
   .dashboardGrid {
       grid-template-columns: 1fr;
+  }
+  .hidden {
+    display: none;
   }
 }
