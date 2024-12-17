@@ -130,4 +130,10 @@ MODIFY COLUMN playerHandling INT NULL,
 MODIFY COLUMN playerKicking INT NULL,
 MODIFY COLUMN playerReflexes INT NULL,
 MODIFY COLUMN playerSpeed INT NULL,
-MODIFY COLUMN playerPositioning INT NULL
+MODIFY COLUMN playerPositioning INT NULL,
+MODIFY COLUMN playerPace INT NULL,
+MODIFY COLUMN playerShooting INT NULL,
+MODIFY COLUMN playerPassing INT NULL,
+MODIFY COLUMN playerDribbling INT NULL,
+MODIFY COLUMN playerDefending INT NULL,
+MODIFY COLUMN playerPhysical INT NULL;
