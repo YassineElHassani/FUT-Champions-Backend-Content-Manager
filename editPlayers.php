@@ -7,6 +7,8 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="./style/dashboardStyle.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <aside class="sidebar">
@@ -35,67 +37,45 @@
         </header>
 
         <section id="editPlayers">
-            <table class="tableContainer">
-                <thead class="tableHeader">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
                     <tr>
                         <th>Position</th>
-                        <th>Player Name</th>
+                        <th>Name</th>
                         <th>Nationality</th>
                         <th>Club</th>
-                        <th>Player Pace</th>
-                        <th>Player Shooting</th>
-                        <th>Player Passing</th>
-                        <th>Player Dribbling</th>
-                        <th>Player Defending</th>
-                        <th>Player Physical</th>
-                        <th>Player Rating</th>
-                        <th>Player Image</th>
+                        <th>Pace</th>
+                        <th>Shooting</th>
+                        <th>Passing</th>
+                        <th>Dribbling</th>
+                        <th>Defending</th>
+                        <th>Physical</th>
+                        <th>Rating</th>
+                        <th>Image</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php 
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $database = "futdb";
-
-                        $connection = new mysqli($servername, $username, $password, $database);
-                        
-                        if ($connection->connect_error) {
-                            die("Connection failed: " . $connection->connect_error);
-                        }
-
-                        $sql = "SELECT * FROM player";
-                        $result = $connection->query($sql);
-
-                        if(!$result) {
-                            die("Invalid query: " . $connection->error);
-                        }
-
-                        while ($row = $result->fetch_assoc()) {
-                            echo "
-                            <tr>
-                                <td>$row[positionID]</td>
-                                <td>$row[playerName]</td>
-                                <td>$row[nationalityID]</td>
-                                <td>$row[clubID]</td>
-                                <td>$row[playerPace]</td>
-                                <td>$row[playerShooting]</td>
-                                <td>$row[playerPassing]</td>
-                                <td>$row[playerDribbling]</td>
-                                <td>$row[playerDefending]</td>
-                                <td>$row[playerPhysical]</td>
-                                <td>$row[playerRating]</td>
-                                <td>$row[playerImage]</td>
-                                
-                            </tr>
-                            ";
-                        }
-                    ?>
-                    <td>
-                        <a href="editPlayer.php">Edit</a>
-                        <a href="delete.php">delete</a>
-                    </td>
+                <tbody style="background-color: rgb(102, 121, 228); color: #fff;">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="flex justify-around">
+                                <a href="editing.php" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="delete.php" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </section>
