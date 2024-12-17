@@ -76,17 +76,17 @@
                         <th>Player Name</th>
                         <th>Nationality</th>
                         <th>Club</th>
-                        <th>Player Pace</th>
-                        <th>Player Shooting</th>
-                        <th>Player Passing</th>
-                        <th>Player Dribbling</th>
-                        <th>Player Defending</th>
-                        <th>Player Physical</th>
-                        <th>Player Rating</th>
-                        <th>Player Image</th>
+                        <th>Pace</th>
+                        <th>Shooting</th>
+                        <th>Passing</th>
+                        <th>Dribbling</th>
+                        <th>Defending</th>
+                        <th>Physical</th>
+                        <th>Rating</th>
+                        <th>Image</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="margin-left: 20px;">
                     <?php 
                         $servername = "localhost";
                         $username = "root";
