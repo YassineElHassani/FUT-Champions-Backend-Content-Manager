@@ -43,14 +43,6 @@
             </div>
         </section>
     </main>
-    <script>
-        function confirmLogout() {
-            window.location.href = 'login.php';
-        }
-
-        function cancelLogout() {
-            window.location.href = 'dashboard.php';
-        }
-    </script>
+    <script src="./script/logout.js"></script>
 </body>
 </html>
