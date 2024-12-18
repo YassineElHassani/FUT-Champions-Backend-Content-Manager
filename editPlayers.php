@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/img/logo.png" type="image/x-icon"/>
-    <title>Dashboard</title>
+    <title>Edit Players 📋</title>
     <link rel="stylesheet" href="./style/dashboardStyle.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <aside class="sidebar">
@@ -37,48 +35,82 @@
         </header>
 
         <section id="editPlayers">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Position</th>
-                        <th>Name</th>
-                        <th>Nationality</th>
-                        <th>Club</th>
-                        <th>Pace</th>
-                        <th>Shooting</th>
-                        <th>Passing</th>
-                        <th>Dribbling</th>
-                        <th>Defending</th>
-                        <th>Physical</th>
-                        <th>Rating</th>
-                        <th>Image</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody style="background-color: rgb(102, 121, 228); color: #fff;">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="flex justify-around">
-                                <a href="editing.php" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="delete.php" class="btn btn-sm btn-danger">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table class="players-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Position</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Nationality</th>
+                            <th>Club</th>
+                            <th>Pace</th>
+                            <th>Shooting</th>
+                            <th>Passing</th>
+                            <th>Dribbling</th>
+                            <th>Defending</th>
+                            <th>Physical</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $database = "futdb";
+
+                            $connection = new mysqli($servername, $username, $password, $database);
+
+                            if ($connection->connect_error) {
+                                die("Connection failed: " . $connection->connect_error);
+                            }
+
+                            $sql = "SELECT playerID, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo, positionName
+                                    FROM player 
+                                    JOIN club ON player.clubID = club.clubID
+                                    JOIN nationality ON player.nationalityID = nationality.nationalityID
+                                    JOIN position ON player.playerID = position.positionID;";
+                            $result = $connection->query($sql);
+
+                            if(!$result) {
+                                die("Invalid query: " . $connection->error);
+                            }
+
+                            while ($row = $result->fetch_assoc()) {
+                                echo "
+                                    <tr>
+                                        <td style='font-weight: bold;'>$row[playerID]</td>
+                                        <td style='font-weight: bold;'>$row[positionName]</td>
+                                        <td style='font-weight: bold;'>$row[playerName]</td>
+                                        <td><img src='$row[playerImage]' height='30px' width='50px'></td>
+                                        <td><img src='$row[nationalityLogo]' height='30px' width='50px'></td>
+                                        <td><img src='$row[clubLogo]' height='30px' width='50px'></td>
+                                        <td style='font-weight: bold;'>$row[playerPace]</td>
+                                        <td style='font-weight: bold;'>$row[playerShooting]</td>
+                                        <td style='font-weight: bold;'>$row[playerPassing]</td>
+                                        <td style='font-weight: bold;'>$row[playerDribbling]</td>
+                                        <td style='font-weight: bold;'>$row[playerDefending]</td>
+                                        <td style='font-weight: bold;'>$row[playerPhysical]</td>
+                                        <td style='font-weight: bold; color: rgb(41, 25, 185);'>$row[playerRating]</td>
+                                        <td>
+                                            <div class='flex justify-between'>
+                                                <a id='edit' href='editing.php?id=$row[playerID]' class='edit'>✏️</a>
+                                                <a id='delete' href='deletePlayer.php?id=$row[playerID]' class='delete'>❌</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ";
+
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+    <script src="./script/script.js"></script>
 </body>
 </html>
