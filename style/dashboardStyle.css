@@ -136,7 +136,7 @@ body {
   color: rgb(41, 25, 185);
 }
 
-.tableContainer {
+/* .tableContainer {
   margin-top: 50px;
   background-color: rgb(102, 121, 228);
   box-shadow: 0 4px 6px rgb(75, 121, 247);
@@ -145,21 +145,91 @@ body {
 
 
 .tableHeader {
-  padding: 10px;
-  margin-left: 20px;
+  padding: 30px;
+} */
+
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px rgb(75, 121, 247);
+  border-radius: 8px;
+  margin-top: 50px;
 }
+
+.players-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgb(75, 121, 247);
+}
+
+.players-table thead {
+  background-color: rgb(75, 121, 247);
+  color: white;
+}
+
+.players-table th, 
+.players-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.players-table th {
+  background-color: rgb(41, 25, 185);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.players-table tr:nth-child(even) {
+  background-color: rgb(102, 121, 228);
+}
+
+.players-table tr:hover {
+  background-color: rgb(61, 86, 228);
+  transition: background-color 0.3s ease;
+}
+
+.table-image {
+  max-height: 50px;
+  max-width: 80px;
+  object-fit: contain;
+}
+
+.edit {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  padding-top: 2px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.edit:hover {
+  transform: scale(1.5);
+}
+
+.delete {
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  padding-top: 2px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.delete:hover {
+  transform: scale(1.5);
+}
+
 
 .addPlayer {
   margin-inline: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   padding: 20px;
   background-color: rgb(102, 121, 228);
   box-shadow: 0 4px 6px rgb(75, 121, 247);
   border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  -o-border-radius: 30px;
 }
 
 .addPlayer #submitBtn {
@@ -174,6 +244,20 @@ body {
 
 .addPlayer #submitBtn:hover {
   background-color: rgb(25, 0, 255);
+}
+
+.addPlayer #cancelBtn {
+  height: 50px;
+  width: 150px;
+  border-radius: 30px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.addPlayer #cancelBtn:hover {
+  background-color: #fd0000;
 }
 
 .logout {
