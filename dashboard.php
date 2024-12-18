@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./src/img/logo.png" type="image/x-icon"/>
-    <title>Dashboard</title>
+    <title>Dashboard 📊</title>
     <link rel="stylesheet" href="./style/dashboardStyle.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -69,70 +69,79 @@
                 </div>
             </div>
 
-            <table class="tableContainer">
-                <thead class="tableHeader">
-                    <tr>
-                        <th>Position</th>
-                        <th>Player Name</th>
-                        <th>Nationality</th>
-                        <th>Club</th>
-                        <th>Pace</th>
-                        <th>Shooting</th>
-                        <th>Passing</th>
-                        <th>Dribbling</th>
-                        <th>Defending</th>
-                        <th>Physical</th>
-                        <th>Rating</th>
-                        <th>Image</th>
-                    </tr>
-                </thead>
-                <tbody style="margin-left: 20px;">
-                    <?php 
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $database = "futdb";
+            <div class="table-container">
+                <table class="players-table">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Nationality</th>
+                            <th>Club</th>
+                            <th>Pace</th>
+                            <th>Shooting</th>
+                            <th>Passing</th>
+                            <th>Dribbling</th>
+                            <th>Defending</th>
+                            <th>Physical</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $database = "futdb";
 
-                        $connection = new mysqli($servername, $username, $password, $database);
-                        
-                        if ($connection->connect_error) {
-                            die("Connection failed: " . $connection->connect_error);
-                        }
+                            $connection = new mysqli($servername, $username, $password, $database);
 
-                        $sql = "SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo, positionName
-                                FROM player 
-                                JOIN club ON player.clubID = club.clubID
-                                JOIN nationality ON player.nationalityID = nationality.nationalityID
-                                JOIN position ON player.playerID = position.positionID;";
-                        $result = $connection->query($sql);
+                            if ($connection->connect_error) {
+                                die("Connection failed: " . $connection->connect_error);
+                            }
 
-                        if(!$result) {
-                            die("Invalid query: " . $connection->error);
-                        }
+                            $sql = "SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo, positionName
+                                    FROM player 
+                                    JOIN club ON player.clubID = club.clubID
+                                    JOIN nationality ON player.nationalityID = nationality.nationalityID
+                                    JOIN position ON player.playerID = position.positionID;";
+                            $result = $connection->query($sql);
 
-                        while ($row = $result->fetch_assoc()) {
-                            echo "
-                            <tr>
-                                <td>$row[positionName]</td>
-                                <td>$row[playerName]</td>
-                                <td><img src="."$row[nationalityLogo]"." height="."30px"." width="."50px"."></td>
-                                <td><img src="."$row[clubLogo]"." height="."30px"." width="."50px"."></td>
-                                <td>$row[playerPace]</td>
-                                <td>$row[playerShooting]</td>
-                                <td>$row[playerPassing]</td>
-                                <td>$row[playerDribbling]</td>
-                                <td>$row[playerDefending]</td>
-                                <td>$row[playerPhysical]</td>
-                                <td>$row[playerRating]</td>
-                                <td><img src="."$row[playerImage]"." height="."30px"." width="."50px"."></td>
-                            </tr>
-                            ";
-                        }
-                    ?>
-                    
-                </tbody>
-            </table>
+                            if(!$result) {
+                                die("Invalid query: " . $connection->error);
+                            }
+
+                            while ($row = $result->fetch_assoc()) {
+                                echo "
+                                <tr>
+                                    <td style='font-weight: bold;'>$row[positionName]</td>
+                                    <td style='font-weight: bold;'>$row[playerName]</td>
+                                    <td><img src="."$row[playerImage]"." height="."30px"." width="."50px"."></td>
+                                    <td><img src="."$row[nationalityLogo]"." height="."30px"." width="."50px"."></td>
+                                    <td><img src="."$row[clubLogo]"." height="."30px"." width="."50px"."></td>
+                                    <td style='font-weight: bold;'>$row[playerPace]</td>
+                                    <td style='font-weight: bold;'>$row[playerShooting]</td>
+                                    <td style='font-weight: bold;'>$row[playerPassing]</td>
+                                    <td style='font-weight: bold;'>$row[playerDribbling]</td>
+                                    <td style='font-weight: bold;'>$row[playerDefending]</td>
+                                    <td style='font-weight: bold;'>$row[playerPhysical]</td>
+                                    <td style='font-weight: bold; color: rgb(41, 25, 185);'>$row[playerRating]</td>
+                                    <td>
+                                        <div class='flex justify-between'>
+                                            <a href='editing.php' class='edit'>✏️</a>
+                                            <a href='delete.php' class='delete'>❌</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                ";
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+    <script src="./script/script.js"></script>
 </body>
 </html>
