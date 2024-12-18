@@ -39,8 +39,6 @@
     <link rel="stylesheet" href="./style/loginStyle.css">
     <link rel="stylesheet" href="./style/style.css">
     <title>Login</title>
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="container">
