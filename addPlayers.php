@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             playerDefending, playerPhysical, playerImage, playerRating, playerDiving, playerHandling, playerKicking, 
             playerReflexes, playerSpeed, playerPositioning
         ) VALUES (
-            $playerPosition, '$playerName', $playerNationality, $playerClub, $playerPace, $playerShooting, $playerPassing, 
+            '$playerPosition', '$playerName', $playerNationality, $playerClub, $playerPace, $playerShooting, $playerPassing, 
             $playerDribbling, $playerDefending, $playerPhysical, '$playerPhoto', $playerRating, $playerDiving, 
             $playerHandling, $playerKicking, $playerReflexes, $playerSpeed, $playerPositioning
         )";
@@ -146,16 +146,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
 
                 <?php 
-                
-                if(!empty($errorMessage)) {
-                    echo "
-                        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                            <strong>$errorMessage</strong>
-                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                        </div>
-                    ";
-                }
-                
+                    if(!empty($errorMessage)) {
+                        echo "
+                            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                                <strong>$errorMessage</strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>
+                        ";
+                    }
                 ?>
 
                 <?php 
@@ -257,7 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
 
-                    <div id="standardPlayer" class="grid grid-cols-3 gap-2 mt-4">
+                    <div id="standardPlayer" class="hidden grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerPace" class="block mb-2">Pace</label>
                             <input type="number" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
@@ -285,7 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <div id="gkFields" class="hidden">
+                <div id="gkFields">
                     <div class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerDiving" class="block mb-2">Diving</label>
