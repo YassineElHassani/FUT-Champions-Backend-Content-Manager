@@ -68,11 +68,10 @@
                                 die("Connection failed: " . $connection->connect_error);
                             }
 
-                            $sql = "SELECT playerID, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo, positionName
+                            $sql = "SELECT playerID, position, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo
                                     FROM player 
                                     JOIN club ON player.clubID = club.clubID
-                                    JOIN nationality ON player.nationalityID = nationality.nationalityID
-                                    JOIN position ON player.playerID = position.positionID;";
+                                    JOIN nationality ON player.nationalityID = nationality.nationalityID;";
                             $result = $connection->query($sql);
 
                             if(!$result) {
@@ -83,7 +82,7 @@
                                 echo "
                                     <tr>
                                         <td style='font-weight: bold;'>$row[playerID]</td>
-                                        <td style='font-weight: bold;'>$row[positionName]</td>
+                                        <td style='font-weight: bold;'>$row[position]</td>
                                         <td style='font-weight: bold;'>$row[playerName]</td>
                                         <td><img src='$row[playerImage]' height='30px' width='50px'></td>
                                         <td><img src='$row[nationalityLogo]' height='30px' width='50px'></td>
