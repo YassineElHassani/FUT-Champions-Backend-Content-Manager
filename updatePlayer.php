@@ -1,10 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "futdb";
-
-$connection = new mysqli($servername, $username, $password, $database);
+require_once './config/db_connection.php';
 
 $errorMessage = "";
 $successMessage = "";
@@ -38,24 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         $sql = "UPDATE player 
-                SET position = ?, 
-                    playerName = ?, 
-                    playerImage = ?, 
-                    nationalityID = ?, 
-                    clubID = ?, 
-                    playerPace = ?, 
-                    playerShooting = ?, 
-                    playerPassing = ?, 
-                    playerDribbling = ?, 
-                    playerDefending = ?, 
-                    playerPhysical = ?, 
-                    playerRating = ?, 
-                    playerDiving = ?, 
-                    playerHandling = ?, 
-                    playerKicking = ?, 
-                    playerReflexes = ?, 
-                    playerSpeed = ?, 
-                    playerPositioning = ? 
+                SET position = ?, playerName = ?, playerImage = ?, nationalityID = ?, clubID = ?, playerPace = ?, playerShooting = ?, playerPassing = ?, 
+                    playerDribbling = ?, playerDefending = ?, playerPhysical = ?, playerRating = ?, playerDiving = ?, playerHandling = ?, playerKicking = ?, 
+                    playerReflexes = ?, playerSpeed = ?, playerPositioning = ? 
                 WHERE playerID = ?";
         $stmt = $connection->prepare($sql);
 
