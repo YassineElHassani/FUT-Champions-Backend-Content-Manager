@@ -57,16 +57,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "futdb";
-
-                            $connection = new mysqli($servername, $username, $password, $database);
-
-                            if ($connection->connect_error) {
-                                die("Connection failed: " . $connection->connect_error);
-                            }
+                            require_once './config/db_connection.php';
 
                             $sql = "SELECT playerID, position, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo
                                     FROM player 
