@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         $sql = "INSERT INTO player (
-            positionID, playerName, nationalityID, clubID, playerPace, playerShooting, playerPassing, playerDribbling, 
+            position, playerName, nationalityID, clubID, playerPace, playerShooting, playerPassing, playerDribbling, 
             playerDefending, playerPhysical, playerImage, playerRating, playerDiving, playerHandling, playerKicking, 
             playerReflexes, playerSpeed, playerPositioning
         ) VALUES (
@@ -149,10 +149,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
                 if(!empty($errorMessage)) {
                     echo "
-                    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
-                    <strong>$errorMessage</strong>
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>
+                        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                            <strong>$errorMessage</strong>
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>
                     ";
                 }
                 
@@ -161,13 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php 
                     if(!empty($successMessage)) {
                         echo "
-                            <div class='row mb-3'>
-                                <div class='offset-sm-3 col-sm-6'>
-                                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                                        <strong>$successMessage</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                                    </div>
-                                </div>
+                            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                <strong>$successMessage</strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>
                         ";
                     }
@@ -176,17 +172,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div>
                     <label for="playerPosition" class="block mb-2">Position</label>
                     <select id="playerPosition" class="w-full p-2 bg-gray-50 rounded" required name="playerPosition">
-                        <option value="1">(GK) Goalkeeper</option>
-                        <option value="2">(LB) Left Back</option>
-                        <option value="3">(LCB) Left Center Back</option>
-                        <option value="4">(RCB) Right Center Back</option>
-                        <option value="5">(RB) Right Back</option>
-                        <option value="6">(LCM) Left Central Midfielder</option>
-                        <option value="7">(CAM) Central Attacking Midfielder</option>
-                        <option value="8">(RCM) Right Central Midfielder</option>
-                        <option value="9">(LF) Left Forward</option>
-                        <option value="10">(ST) Striker</option>
-                        <option value="11">(RF) Right Forward</option>
+                        <option value="GK">(GK) Goalkeeper</option>
+                        <option value="LB">(LB) Left Back</option>
+                        <option value="LCB">(LCB) Left Center Back</option>
+                        <option value="RCB">(RCB) Right Center Back</option>
+                        <option value="RB">(RB) Right Back</option>
+                        <option value="LCM">(LCM) Left Central Midfielder</option>
+                        <option value="CAM">(CAM) Central Attacking Midfielder</option>
+                        <option value="RCM">(RCM) Right Central Midfielder</option>
+                        <option value="LF">(LF) Left Forward</option>
+                        <option value="ST">(ST) Striker</option>
+                        <option value="RF">(RF) Right Forward</option>
                     </select>
                       
                     <div>
@@ -261,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
 
-                    <div id="standardPlayer" class="hidden grid grid-cols-3 gap-2 mt-4">
+                    <div id="standardPlayer" class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerPace" class="block mb-2">Pace</label>
                             <input type="number" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
@@ -289,7 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
-                <div id="gkFields">
+                <div id="gkFields" class="hidden">
                     <div class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerDiving" class="block mb-2">Diving</label>

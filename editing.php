@@ -6,6 +6,8 @@ $database = "futdb";
 
 $connection = new mysqli($servername, $username, $password, $database);
 
+$successMessage = "";
+
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
@@ -15,7 +17,7 @@ $connection->set_charset("utf8");
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $playerID = intval($_GET['id']);
 
-    $query = "SELECT * FROM player JOIN club JOIN nationality JOIN position WHERE playerID = ?";
+    $query = "SELECT * FROM player JOIN club JOIN nationality WHERE playerID = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param("i", $playerID);
     $stmt->execute();
@@ -28,11 +30,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         exit;
     }
 
-    $positionsResult = $connection->query("SELECT DISTINCT positionName FROM position");
+    $nationalitiesResult = $connection->query("SELECT * FROM nationality");
 
-    $nationalitiesResult = $connection->query("SELECT DISTINCT nationalityName, nationalityLogo FROM nationality");
+    $clubsResult = $connection->query("SELECT * FROM club");
 
-    $clubsResult = $connection->query("SELECT DISTINCT clubName, clubLogo FROM club");
+    if(isset($_GET['id']) && $_GET['id'] === $player['playerID'] . 'success'){
+        $successMessage = "Player updated successfully";
+    }
 
 } else {
     echo "No player ID provided.";
@@ -79,20 +83,39 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
         </header>
         <section id="addPlayer" class="addPlayer">
-            <form id="playerForm" class="space-y-4" method="POST" enctype="multipart/form-data">
+            <form id="playerForm" class="space-y-4" action="./updatePlayer.php" method="POST" enctype="multipart/form-data">
                 <h2 class="text-xl font-bold mb-4">Edit Player</h2>
+
+                <?php 
+                    if(!empty($successMessage)) {
+                        echo "
+                            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                                <strong>$successMessage</strong>
+                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>
+                        ";
+                    }
+                ?>
 
                 <input type="hidden" name="playerID" value="<?= htmlspecialchars($player['playerID']); ?>">
 
                 <div>
                     <label for="playerPosition" class="block mb-2">Position</label>
                     <select id="playerPosition" class="w-full p-2 bg-gray-50 rounded" required name="playerPosition">
-                        <?php while ($position = $positionsResult->fetch_assoc()): ?>
-                            <option value="<?php echo htmlspecialchars($position['positionName']); ?>" 
-                                <?php echo ($position['positionName'] === $player['positionName']) ? 'selected' : ''; ?>>
-                                <?php echo $position['positionName']; ?>
+                            <option value="<?= htmlspecialchars($player['position']); ?>">
+                                <?php echo $player['position']; ?>
                             </option>
-                        <?php endwhile; ?>
+                            <option value="GK">(GK) Goalkeeper</option>
+                            <option value="LB">(LB) Left Back</option>
+                            <option value="LCB">(LCB) Left Center Back</option>
+                            <option value="RCB">(RCB) Right Center Back</option>
+                            <option value="RB">(RB) Right Back</option>
+                            <option value="LCM">(LCM) Left Central Midfielder</option>
+                            <option value="CAM">(CAM) Central Attacking Midfielder</option>
+                            <option value="RCM">(RCM) Right Central Midfielder</option>
+                            <option value="LF">(LF) Left Forward</option>
+                            <option value="ST">(ST) Striker</option>
+                            <option value="RF">(RF) Right Forward</option>
                     </select>
                 </div>
 
@@ -110,8 +133,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             <label for="playerNationality" class="block mb-2">Nationality</label>
                             <select id="playerNationality" name="playerNationality" placeholder="Club" class="p-2 w-[100%] bg-gray-50 rounded" required>
                                 <?php while ($nationality = $nationalitiesResult->fetch_assoc()): ?>
-                                    <option value="<?php echo htmlspecialchars($nationality['nationalityName']); ?>" 
-                                        <?php echo ($nationality['nationalityName'] === $player['playerNationality']) ? 'selected' : ''; ?>>
+                                    <option value="<?php echo htmlspecialchars($nationality['nationalityID']); ?>">
                                         <?php echo $nationality['nationalityName']; ?>
                                     </option>
                                 <?php endwhile; ?>
@@ -121,8 +143,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             <label for="playerClub" class="block mb-2">Club</label>
                             <select id="playerClub" name="playerClub" placeholder="Club" class="p-2 w-[100%] bg-gray-50 rounded" required>
                                 <?php while ($club = $clubsResult->fetch_assoc()): ?>
-                                    <option value="<?php echo htmlspecialchars($club['clubName']); ?>" 
-                                        <?php echo ($club['clubName'] === $player['playerClub']) ? 'selected' : ''; ?>>
+                                    <option value="<?php echo htmlspecialchars($club['clubID']); ?>">
                                         <?php echo $club['clubName']; ?>
                                     </option>
                                 <?php endwhile; ?>
@@ -169,8 +190,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     </div>
                 </div>
 
-                <div id="gkFields">
-                    <div class="hidden grid grid-cols-3 gap-2 mt-4">
+                <div id="gkFields" class="hidden">
+                    <div class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerDiving" class="block mb-2">Diving</label>
                             <input type="number" value="<?= htmlspecialchars($player['playerDiving']); ?>" id="playerDiving" name="playerDiving" placeholder="Diving" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
