@@ -1,10 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "futdb";
-
-$connection = new mysqli($servername, $username, $password, $database);
+require_once './config/db_connection.php';
 
 $playerPosition = "";
 $playerName = "";
@@ -170,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div>
                     <label for="playerPosition" class="block mb-2">Position</label>
                     <select id="playerPosition" class="w-full p-2 bg-gray-50 rounded" required name="playerPosition">
+                        <option value="">Select a Position</option>
                         <option value="GK">(GK) Goalkeeper</option>
                         <option value="LB">(LB) Left Back</option>
                         <option value="LCB">(LCB) Left Center Back</option>
@@ -196,50 +192,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <label for="playerNationality" class="block mb-2">Nationality</label>
                             <select id="playerNationality" name="playerNationality" placeholder="Club" class="p-2 w-[100%] bg-gray-50 rounded" required>
                                 <option value="">Select a Country</option>
-                                    <option value="1">Brazil</option>
-                                    <option value="2">Argentina</option>
-                                    <option value="3">Germany</option>
-                                    <option value="4">Spain</option>
-                                    <option value="5">France</option>
-                                    <option value="6">Italy</option>
-                                    <option value="7">Morocco</option>
-                                    <option value="8">England</option>
-                                    <option value="9">Portugal</option>
-                                    <option value="10">Switzerland</option>
-                                    <option value="11">Belgium</option>
-                                    <option value="12">United States</option>
-                                    <option value="13">Croatia</option>
-                                    <option value="14">Sweden</option>
-                                    <option value="15">Colombia</option>
-                                    <option value="16">Mexico</option>
-                                    <option value="17">Uruguay</option>
-                                    <option value="18">Chile</option>
-                                    <option value="19">Denmark</option>
-                                    <option value="20">Japan</option>
+                                <option value="1">Brazil</option>
+                                <option value="2">Argentina</option>
+                                <option value="3">Germany</option>
+                                <option value="4">Spain</option>
+                                <option value="5">France</option>
+                                <option value="6">Italy</option>
+                                <option value="7">Morocco</option>
+                                <option value="8">England</option>
+                                <option value="9">Portugal</option>
+                                <option value="10">Switzerland</option>
+                                <option value="11">Belgium</option>
+                                <option value="12">United States</option>
+                                <option value="13">Croatia</option>
+                                <option value="14">Sweden</option>
+                                <option value="15">Colombia</option>
+                                <option value="16">Mexico</option>
+                                <option value="17">Uruguay</option>
+                                <option value="18">Chile</option>
+                                <option value="19">Denmark</option>
+                                <option value="20">Japan</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="playerClub" class="block mb-2">Club</label>
                             <select id="playerClub" name="playerClub" placeholder="Club" class="p-2 w-[100%] bg-gray-50 rounded" required>
                                 <option value="">Select a Club</option>
-                                    <option value="1">FC Barcelona</option>
-                                    <option value="2">Manchester United</option>
-                                    <option value="3">Real Madrid</option>
-                                    <option value="4">Atlético de Madrid</option>
-                                    <option value="5">Arsenal</option>
-                                    <option value="6">Bayern Munich</option>
-                                    <option value="7">Juventus</option>
-                                    <option value="8">Chelsea</option>
-                                    <option value="9">PSG</option>
-                                    <option value="10">AC Milan</option>
-                                    <option value="11">Liverpool</option>
-                                    <option value="12">Manchester City</option>
-                                    <option value="13">Inter Milan</option> 
-                                    <option value="14">Southampton</option>
-                                    <option value="15">Borussia Dortmund</option>
-                                    <option value="16">RB Leipzig</option>
-                                    <option value="17">Schalke 04</option>
-                                    <option value="18">AS Roma</option>
+                                <option value="1">FC Barcelona</option>
+                                <option value="2">Manchester United</option>
+                                <option value="3">Real Madrid</option>
+                                <option value="4">Atlético de Madrid</option>
+                                <option value="5">Arsenal</option>
+                                <option value="6">Bayern Munich</option>
+                                <option value="7">Juventus</option>
+                                <option value="8">Chelsea</option>
+                                <option value="9">PSG</option>
+                                <option value="10">AC Milan</option>
+                                <option value="11">Liverpool</option>
+                                <option value="12">Manchester City</option>
+                                <option value="13">Inter Milan</option> 
+                                <option value="14">Southampton</option>
+                                <option value="15">Borussia Dortmund</option>
+                                <option value="16">RB Leipzig</option>
+                                <option value="17">Schalke 04</option>
+                                <option value="18">AS Roma</option>
                             </select>
                         </div>
 
@@ -255,35 +251,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
 
-                    <div id="standardPlayer" class="hidden grid grid-cols-3 gap-2 mt-4">
+                    <div id="standardPlayer" class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerPace" class="block mb-2">Pace</label>
-                            <input type="number" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerShooting" class="block mb-2">Shooting</label>
-                            <input type="number" id="playerShooting" name="playerShooting" placeholder="Shooting" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerShooting" name="playerShooting" placeholder="Shooting" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerPassing" class="block mb-2">Passing</label>
-                            <input type="number" id="playerPassing" name="playerPassing" placeholder="Passing" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerPassing" name="playerPassing" placeholder="Passing" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerDribbling" class="block mb-2">Dribbling</label>
-                            <input type="number" id="playerDribbling" name="playerDribbling" placeholder="Dribbling" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerDribbling" name="playerDribbling" placeholder="Dribbling" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerDefending" class="block mb-2">Defending</label>
-                            <input type="number" id="playerDefending" name="playerDefending" placeholder="Defending" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerDefending" name="playerDefending" placeholder="Defending" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerPhysical" class="block mb-2">Physical</label>
-                            <input type="number" id="playerPhysical" name="playerPhysical" placeholder="Physical" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" id="playerPhysical" name="playerPhysical" placeholder="Physical" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                     </div>
                 </div>
 
-                <div id="gkFields">
+                <div id="gkFields" class="hidden">
                     <div class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerDiving" class="block mb-2">Diving</label>
