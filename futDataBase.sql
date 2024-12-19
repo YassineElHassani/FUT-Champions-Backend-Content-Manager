@@ -27,18 +27,18 @@ CREATE TABLE player(
     playerImage VARCHAR(255),
     position varchar(10) NOT NULL,
     playerRating INT NOT NULL,
-    playerPace INT,
-    playerShooting INT,
-    playerPassing INT,
-    playerDribbling INT,
-    playerDefending INT,
-    playerPhysical INT,
-    playerDiving INT,
-    playerHandling INT,
-    playerKicking INT,
-    playerReflexes INT,
-    playerSpeed INT,
-    playerPositioning INT
+    playerPace INT NULL,
+    playerShooting INT NULL,
+    playerPassing INT NULL,
+    playerDribbling INT NULL,
+    playerDefending INT NULL,
+    playerPhysical INT NULL,
+    playerDiving INT NULL,
+    playerHandling INT NULL,
+    playerKicking INT NULL,
+    playerReflexes INT NULL,
+    playerSpeed INT NULL,
+    playerPositioning INT NULL
 );
 
 -- FOREIGN KEY nationalityID
@@ -102,7 +102,7 @@ VALUES
 ('Kylian Mbappé', 'LF', 5, 9, 76, 84, 90, 82, 79, 87, 'https://cdn.sofifa.net/players/231/747/25_120.png', 84);
 
 -- Query for displaying data in dashboard
-SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, clubName, nationalityName, nationalityLogo
+SELECT playerID, position, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo
 FROM player 
 JOIN club ON player.clubID = club.clubID
-JOIN nationality ON player.nationalityID = nationality.nationalityID
+JOIN nationality ON player.nationalityID = nationality.nationalityID;
