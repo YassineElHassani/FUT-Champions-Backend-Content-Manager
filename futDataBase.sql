@@ -17,40 +17,29 @@ CREATE TABLE nationality(
     nationalityLogo VARCHAR(255) NOT NULL
 );
 
--- Creation of the position table
-USE futDB;
-CREATE TABLE position(
-    positionID INT PRIMARY KEY AUTO_INCREMENT,
-    positionName VARCHAR(3) NOT NULL UNIQUE
-);
-
 -- Creation of the player table
 USE futDB;
 CREATE TABLE player(
 	playerID INT PRIMARY KEY AUTO_INCREMENT,
     playerName VARCHAR(100) NOT NULL UNIQUE,
-    positionID INT NOT NULL,
     nationalityID INT NOT NULL,
     clubID INT NOT NULL,
     playerImage VARCHAR(255),
+    position varchar(10) NOT NULL,
     playerRating INT NOT NULL,
-    playerPace INT NOT NULL,
-    playerShooting INT NOT NULL,
-    playerPassing INT NOT NULL,
-    playerDribbling INT NOT NULL,
-    playerDefending INT NOT NULL,
-    playerPhysical INT NOT NULL,
-    playerDiving INT NOT NULL,
-    playerHandling INT NOT NULL,
-    playerKicking INT NOT NULL,
-    playerReflexes INT NOT NULL,
-    playerSpeed INT NOT NULL,
-    playerPositioning INT NOT NULL
+    playerPace INT,
+    playerShooting INT,
+    playerPassing INT,
+    playerDribbling INT,
+    playerDefending INT,
+    playerPhysical INT,
+    playerDiving INT,
+    playerHandling INT,
+    playerKicking INT,
+    playerReflexes INT,
+    playerSpeed INT,
+    playerPositioning INT
 );
-
--- FOREIGN KEY positionID
-ALTER TABLE `player`
-ADD CONSTRAINT `fk_position` FOREIGN KEY (`positionID`) REFERENCES `position`(`positionID`);
 
 -- FOREIGN KEY nationalityID
 ALTER TABLE `player`
@@ -59,10 +48,6 @@ ADD CONSTRAINT `fk_nationalityID` FOREIGN KEY (`nationalityID`) REFERENCES `nati
 -- FOREIGN KEY clubID
 ALTER TABLE `player`
 ADD CONSTRAINT `fk_clubID` FOREIGN KEY (`clubID`) REFERENCES `club`(`clubID`);
-
-
--- INSERTING DATA INTO position TABLE
-INSERT INTO nationality () 
 
 --INSERTING DATA INTO club TABLE
 INSERT INTO club (clubName, clubLogo) VALUES
@@ -110,30 +95,14 @@ INSERT INTO nationality (nationalityName, nationalityLogo) VALUES
 ('Japan', 'https://cdn3.futbin.com/content/fifa25/img/nation/163.png?fm=png&amp;ixlib=java-2.1.0&amp;w=70&amp;s=bfa014f8ed2b28e2d96c3345021a153f');
 
 -- INSERTING DATA INTO player TABLE
-INSERT INTO player (playerName, positionID, nationalityID, clubID, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerImage, playerRating, playerDiving, playerHandling, playerKicking, playerReflexes, playerSpeed, playerPositioning)
+INSERT INTO player (playerName, position, nationalityID, clubID, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerImage, playerRating, playerDiving, playerHandling, playerKicking, playerReflexes, playerSpeed, playerPositioning)
 VALUES 
-('Lionel Messi', 10, 2, 1, 90, 94, 89, 95, 82, 92, 'https://cdn.sofifa.net/players/158/023/25_120.png', 97, 0, 0, 0, 0, 0, 0),
-('Cristiano Ronaldo', 10, 9, 3, 88, 93, 92, 86, 90, 95, 'https://cdn.sofifa.net/players/020/801/25_120.png', 96, 0, 0, 0, 0, 0, 0),
-('Kylian Mbappé', 9, 5, 9, 76, 84, 90, 82, 79, 87, 'https://cdn.sofifa.net/players/231/747/25_120.png', 84, 0, 0, 0, 0, 0, 0);
+('Lionel Messi', 'ST', 2, 1, 90, 94, 89, 95, 82, 92, 'https://cdn.sofifa.net/players/158/023/25_120.png', 97),
+('Cristiano Ronaldo', 'ST', 9, 3, 88, 93, 92, 86, 90, 95, 'https://cdn.sofifa.net/players/020/801/25_120.png', 96),
+('Kylian Mbappé', 'LF', 5, 9, 76, 84, 90, 82, 79, 87, 'https://cdn.sofifa.net/players/231/747/25_120.png', 84);
 
 -- Query for displaying data in dashboard
-SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, clubName, nationalityName, nationalityLogo, positionName
+SELECT playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, clubName, nationalityName, nationalityLogo
 FROM player 
 JOIN club ON player.clubID = club.clubID
 JOIN nationality ON player.nationalityID = nationality.nationalityID
-JOIN position ON player.playerID = position.positionID;
-
--- MODIFY COLUMNS
-ALTER TABLE player
-MODIFY COLUMN playerDiving INT NULL,
-MODIFY COLUMN playerHandling INT NULL,
-MODIFY COLUMN playerKicking INT NULL,
-MODIFY COLUMN playerReflexes INT NULL,
-MODIFY COLUMN playerSpeed INT NULL,
-MODIFY COLUMN playerPositioning INT NULL,
-MODIFY COLUMN playerPace INT NULL,
-MODIFY COLUMN playerShooting INT NULL,
-MODIFY COLUMN playerPassing INT NULL,
-MODIFY COLUMN playerDribbling INT NULL,
-MODIFY COLUMN playerDefending INT NULL,
-MODIFY COLUMN playerPhysical INT NULL;
