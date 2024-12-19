@@ -1,18 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "futdb";
-
-$connection = new mysqli($servername, $username, $password, $database);
+require_once './config/db_connection.php';
 
 $successMessage = "";
 
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
-
-$connection->set_charset("utf8");
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $playerID = intval($_GET['id']);
@@ -165,27 +158,27 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <div id="standardPlayer" class="grid grid-cols-3 gap-2 mt-4">
                         <div>
                             <label for="playerPace" class="block mb-2">Pace</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerPace']); ?>" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerPace']); ?>" id="playerPace" name="playerPace" placeholder="Pace" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerShooting" class="block mb-2">Shooting</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerShooting']); ?>" id="playerShooting" name="playerShooting" placeholder="Shooting" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerShooting']); ?>" id="playerShooting" name="playerShooting" placeholder="Shooting" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerPassing" class="block mb-2">Passing</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerPassing']); ?>" id="playerPassing" name="playerPassing" placeholder="Passing" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerPassing']); ?>" id="playerPassing" name="playerPassing" placeholder="Passing" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerDribbling" class="block mb-2">Dribbling</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerDribbling']); ?>" id="playerDribbling" name="playerDribbling" placeholder="Dribbling" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerDribbling']); ?>" id="playerDribbling" name="playerDribbling" placeholder="Dribbling" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerDefending" class="block mb-2">Defending</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerDefending']); ?>" id="playerDefending" name="playerDefending" placeholder="Defending" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerDefending']); ?>" id="playerDefending" name="playerDefending" placeholder="Defending" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                         <div>
                             <label for="playerPhysical" class="block mb-2">Physical</label>
-                            <input type="number" value="<?= htmlspecialchars($player['playerPhysical']); ?>" id="playerPhysical" name="playerPhysical" placeholder="Physical" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded" required>
+                            <input type="number" value="<?= htmlspecialchars($player['playerPhysical']); ?>" id="playerPhysical" name="playerPhysical" placeholder="Physical" min="1" max="99" class="p-2 w-[100%] bg-gray-50 rounded">
                         </div>
                     </div>
                 </div>
