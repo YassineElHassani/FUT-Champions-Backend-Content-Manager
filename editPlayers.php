@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['redirected']) && $_SESSION['redirected'] === true) {
+    $successMessage = "Player deleted successfully";
+    unset($_SESSION['redirected']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +14,8 @@
     <link rel="icon" href="./src/img/logo.png" type="image/x-icon"/>
     <title>Edit Players 📋</title>
     <link rel="stylesheet" href="./style/dashboardStyle.css">
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -33,6 +43,17 @@
                 </div>
             </div>
         </header>
+
+        <?php 
+            if(!empty($successMessage)) {
+                echo "
+                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                        <strong>$successMessage</strong>
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div>
+                ";
+            }
+        ?>
 
         <section id="editPlayers">
             <div class="table-container">
