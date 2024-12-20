@@ -2,7 +2,7 @@
 if(isset($_GET['id'])) {
     $playerID = $_GET['id'];
     
-    require_once './config/db_connection.php';
+    include './config/db_connection.php';
 
     $sql = "DELETE FROM player WHERE playerID = $playerID";
 
