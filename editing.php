@@ -1,5 +1,5 @@
 <?php
-require_once './config/db_connection.php';
+include './config/db_connection.php';
 
 $successMessage = "";
 
@@ -57,10 +57,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <h2>FUT Team Builder</h2>
         </div>
         <nav class="sidebarMenu">
-            <a href="dashboard.php"><i>📊</i> Dashboard</a>
-            <a href="addPlayers.php"><i>👥</i> Add Players</a>
-            <a href="editPlayers.php" class="active"><i>📋</i> Edit Players</a>
-            <a href="logout.php"><i>↩️</i> Logout</a>
+            <a href="dashboard.php"><i>📊</i><b>Dashboard</b></a>
+            <a href="addPlayers.php"><i>👥</i><b>Add Players</b></a>
+            <a href="addNationality.php"><i>🚩</i><b>Add Nationality</b></a>
+            <a href="addClub.php"><i>🛡️</i><b>Add Club</b></a>
+            <a href="editPlayers.php" class="active"><i>📋</i><b>Edit Players</b></a>
+            <a href="logout.php"><i>↩️</i><b>Logout</b></a>
         </nav>
     </aside>
 
@@ -75,7 +77,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
             </div>
         </header>
-        <section id="addPlayer" class="addPlayer">
+        <section id="editPlayers" class="addPlayer">
             <form id="playerForm" class="space-y-4" action="./updatePlayer.php" method="POST" enctype="multipart/form-data">
                 <h2 class="text-xl font-bold mb-4">Edit Player</h2>
 
