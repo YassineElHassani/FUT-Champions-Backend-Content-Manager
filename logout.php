@@ -14,10 +14,12 @@
             <h2>FUT Team Builder</h2>
         </div>
         <nav class="sidebarMenu">
-            <a href="dashboard.php"><i>📊</i> Dashboard</a>
-            <a href="addPlayers.php"><i>👥</i> Add Players</a>
-            <a href="editPlayers.php"><i>📋</i> Edit Players</a>
-            <a href="login.php" class="active"><i>↩️</i> Logout</a>
+            <a href="dashboard.php"><i>📊</i><b>Dashboard</b></a>
+            <a href="addPlayers.php"><i>👥</i><b>Add Players</b></a>
+            <a href="addNationality.php"><i>🚩</i><b>Add Nationality</b></a>
+            <a href="addClub.php"><i>🛡️</i><b>Add Club</b></a>
+            <a href="editPlayers.php"><i>📋</i><b>Edit Players</b></a>
+            <a href="login.php" class="active"><i>↩️</i><b>Logout</b></a>
         </nav>
     </aside>
 
