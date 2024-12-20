@@ -25,10 +25,12 @@ if (isset($_SESSION['redirected']) && $_SESSION['redirected'] === true) {
             <h2>FUT Team Builder</h2>
         </div>
         <nav class="sidebarMenu">
-            <a href="dashboard.php"><i>📊</i> Dashboard</a>
-            <a href="addPlayers.php"><i>👥</i> Add Players</a>
-            <a href="editPlayers.php" class="active"><i>📋</i> Edit Players</a>
-            <a href="logout.php"><i>↩️</i> Logout</a>
+            <a href="dashboard.php"><i>📊</i><b>Dashboard</b></a>
+            <a href="addPlayers.php"><i>👥</i><b>Add Players</b></a>
+            <a href="addNationality.php"><i>🚩</i><b>Add Nationality</b></a>
+            <a href="addClub.php"><i>🛡️</i><b>Add Club</b></a>
+            <a href="editPlayers.php" class="active"><i>📋</i><b>Edit Players</b></a>
+            <a href="logout.php"><i>↩️</i><b>Logout</b></a>
         </nav>
     </aside>
 
@@ -78,7 +80,7 @@ if (isset($_SESSION['redirected']) && $_SESSION['redirected'] === true) {
                     </thead>
                     <tbody>
                         <?php 
-                            require_once './config/db_connection.php';
+                            include './config/db_connection.php';
 
                             $sql = "SELECT playerID, position, playerName, playerImage, playerPace, playerShooting, playerPassing, playerDribbling, playerDefending, playerPhysical, playerRating, clubLogo, nationalityLogo
                                     FROM player 
