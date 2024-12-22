@@ -98,9 +98,9 @@ if (isset($_SESSION['redirected']) && $_SESSION['redirected'] === true) {
                                         <td style='font-weight: bold;'>$row[playerID]</td>
                                         <td style='font-weight: bold;'>$row[position]</td>
                                         <td style='font-weight: bold;'>$row[playerName]</td>
-                                        <td><img src='$row[playerImage]' height='30px' width='50px'></td>
-                                        <td><img src='$row[nationalityLogo]' height='30px' width='50px'></td>
-                                        <td><img src='$row[clubLogo]' height='30px' width='50px'></td>
+                                        <td><center><img src='$row[playerImage]' height='30px' width='50px'></center></td>
+                                        <td><center><img src='$row[nationalityLogo]' height='30px' width='50px'></center></td>
+                                        <td><center><img src='$row[clubLogo]' height='30px' width='50px'></center></td>
                                         <td style='font-weight: bold;'>$row[playerPace]</td>
                                         <td style='font-weight: bold;'>$row[playerShooting]</td>
                                         <td style='font-weight: bold;'>$row[playerPassing]</td>
