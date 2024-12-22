@@ -36,6 +36,7 @@ $sql = "SELECT
         JOIN 
             nationality ON player.nationalityID = nationality.nationalityID;";
 
+
 $result = $connection->query($sql);
 
 if (!$result) {
