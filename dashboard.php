@@ -40,7 +40,7 @@
             <div class="dashboardGrid">
                 <div class="dashboardCard">
                     <div class="cardHeader">
-                        <h3>Total Players</h3>
+                        <h3><b>Total Players</b></h3>
                         <i>👥</i>
                     </div>
                     <div class="cardValue">254</div>
@@ -48,7 +48,7 @@
 
                 <div class="dashboardCard">
                     <div class="cardHeader">
-                        <h3>Active Clubs</h3>
+                        <h3><b>Active Clubs</b></h3>
                         <i>🏆</i>
                     </div>
                     <div class="cardValue">42</div>
@@ -56,7 +56,7 @@
 
                 <div class="dashboardCard">
                     <div class="cardHeader">
-                        <h3>All Potions</h3>
+                        <h3><b>All Potions</b></h3>
                         <i>📋</i>
                     </div>
                     <div class="cardValue">8</div>
@@ -64,7 +64,7 @@
 
                 <div class="dashboardCard">
                     <div class="cardHeader">
-                        <h3>Recent Transfers</h3>
+                        <h3><b>Recent Transfers</b></h3>
                         <i>🔄</i>
                     </div>
                     <div class="cardValue">12</div>
@@ -112,9 +112,9 @@
                                 <tr>
                                     <td style='font-weight: bold;'>$row[position]</td>
                                     <td style='font-weight: bold;'>$row[playerName]</td>
-                                    <td><img src='$row[playerImage]' height='30px' width='50px'></td>
-                                    <td><img src='$row[nationalityLogo]' height='30px' width='50px'></td>
-                                    <td><img src='$row[clubLogo]' height='30px' width='50px'></td>
+                                    <td><center><img src='$row[playerImage]' height='30px' width='50px'></center></td>
+                                    <td><center><img src='$row[nationalityLogo]' height='30px' width='50px'></center></td>
+                                    <td><center><img src='$row[clubLogo]' height='30px' width='50px'></center></td>
                                     <td style='font-weight: bold;'>$row[playerPace]</td>
                                     <td style='font-weight: bold;'>$row[playerShooting]</td>
                                     <td style='font-weight: bold;'>$row[playerPassing]</td>
