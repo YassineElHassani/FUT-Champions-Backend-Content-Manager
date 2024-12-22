@@ -72,18 +72,87 @@ main {
     height: 100vh;
 }
 
-.dashContainer {
+.homeContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.dashContainer aside {
-    background-color: rgb(0, 0, 0);
-    width: 25%;
-    height: 100%;
-    color: white;
+.stadium {
+    height: 800px;
+    width: 800px;
+    background-image: url(../src/img/terrain.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
-.dashContainer section {
-    margin: 50px;
-    color: white;
+#attackPlayer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    margin-top: 60px;
+}
+
+#attackPlayer .LF, .RF {
+    margin-top: 30px;
+}
+
+#midPlayer {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 220px;
+}
+
+#midPlayer .LCM, .RCM {
+    margin-top: 30px;
+}
+
+#defencePlayer {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+#defencePlayer .LB, .RB {
+    margin-top: 30px;
+}
+
+
+#gkPlayer {
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 200px; */
+}
+
+.playerSlot {
+    position: relative;
+    background-image: url('../src/img/rttk.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 150px;
+    width: 100px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.playerSlot:hover {
+    transform: scale(1.8);
+    z-index: 10;
+    filter: drop-shadow(0 0 0.75rem rgb(20, 220, 70));  
+}
+
+.playerCard {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.playerCard img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
 }
