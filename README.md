@@ -72,7 +72,7 @@ The **FUT Champions Squad Builder - Backend Content Manager** is a PHP-based web
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repository/fut-squad-builder.git
+   git clone https://github.com/YassineElHassani/FUT-Champions-Backend-Content-Manager.git
    ```
 
 2. **Setup Database**:
@@ -113,8 +113,8 @@ The **FUT Champions Squad Builder - Backend Content Manager** is a PHP-based web
 ### Player List
 ![Player List](./src/screenshots/player-list.png)
 
-### Edit Player Form
-![Edit Player Form](./src/screenshots/edit-player-form.png)
+### Add Player Form
+![Edit Player Form](./src/screenshots/add-player-form.png)
 
 ---
 
